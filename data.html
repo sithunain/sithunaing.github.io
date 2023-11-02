@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <style>
+    *{
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+      
+    }
+    body{
+      margin: 0;
+      background: #f0f0f0;
+    }
+    #table{
+      background-color: #fff;
+      border-collapse: collapse;
+      margin: 20px auto;
+      width: 80%;
+      max-width: 800px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+      
+  }
+  #table th,
+  #table td{
+    border: 2px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  #table th{background-color: #f9f9f9;font-weight: bold;}
+  #table tbody tr:hover{background-color: #f5f5f5;}
+  #search-input{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: block;
+    font-size: 16px;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+  }
+  #search-input{
+    color: #aaa;
+  }
+  </style>
+</head>
+
+<body>
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+        <th>Age</th>
+        <th>Services</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>New York</td>
+        <td>25</td>
+      </tr>
+       <tr>
+        <td>Sithu</td>
+        <td>New York</td>
+        <td>Motor</td>
+      </tr>
+       <tr>
+        <td>Kyawthu</td>
+        <td>New York</td>
+        <td>Cycler</td>
+      </tr>
+       <tr>
+        <td>Minaung</td>
+        <td>New York</td>
+        <td>Base</td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <input type="text" id="search-input" placeholder="Search----">
+  <script>
+    const input=document.getElementById("search-input");
+    input.addEventListener("input",function(){
+      const searchValue=this.value.toLowerCase();
+      const rows=document.querySelectorAll("#table tbody tr");
+      rows.forEach(row=>{
+        const cells = row.querySelectorAll("td");
+        let containsValue =false;
+        cells.forEach(cell=>{
+          if(cell.textContent.toLowerCase().includes(searchValue))
+          {
+            containsValue = true;
+          }
+        });
+        
+        if(containsValue){row.style.display =""; }
+        else{row.style.display ="none";}
+        
+      })
+    });
+  </script>
+</body>
+
+</html>
